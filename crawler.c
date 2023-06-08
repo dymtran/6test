@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "crawler.h"
 #include "curl.h"
 #include "pagedir.h"
-#include "hashtable (1).h"
+#include "hashtable.h"
 
 /**
  * Parses command-line arguments, placing the corresponding values into the pointer arguments seedURL,
@@ -38,7 +35,7 @@ static void parseArgs(const int argc, char *argv[], char **seedURL, char **pageD
     }
     // ● if any trouble is found, print an error to stderr and exit non-zero.
     if (pagedir_init(*pageDirectory)) {
-        printf("ran pagedir_init\n")
+        printf("ran pagedir_init\n");
     } else {
         printf(stderr, "Error: %s is not a directory\n", *pageDirectory);
         exit(2);
