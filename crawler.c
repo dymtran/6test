@@ -1,11 +1,9 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "crawler.h"
 #include "curl.h"
 #include "pagedir.h"
-#include "hashtable.h"
 
 /**
  * Parses command-line arguments, placing the corresponding values into the pointer arguments seedURL,
@@ -29,15 +27,15 @@ static void parseArgs(const int argc, char *argv[], char **seedURL, char **pageD
     // return only if successful.
     // ● for pageDirectory, call pagedir_init()
     // ● for maxDepth, ensure it is an integer in specified range [0 ... 10]
-    if (maxDepth < 0 || maxDepth > 10) {
-        printf(stderr, "Error: maxDepth must be in range [0 ... 10]\n");
+    if (*maxDepth < 0 || *maxDepth > 10) {
+        fprintf(stderr, "Error: maxDepth must be in range [0 ... 10]\n");
         exit(3);
     }
     // ● if any trouble is found, print an error to stderr and exit non-zero.
     if (pagedir_init(*pageDirectory)) {
         printf("ran pagedir_init\n");
     } else {
-        printf(stderr, "Error: %s is not a directory\n", *pageDirectory);
+        fprintf(stderr, "Error: %s is not a directory\n", *pageDirectory);
         exit(2);
     }
 
@@ -97,7 +95,3 @@ int main(const int argc, char *argv[]) {
     //
     return 0;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> main
