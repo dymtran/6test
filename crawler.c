@@ -23,17 +23,9 @@ static void parseArgs(const int argc, char *argv[], char **seedURL, char **pageD
     // ● for pageDirectory, call pagedir_init()
     // ● for maxDepth, ensure it is an integer in specified range [0 ... 10]
     // ● if any trouble is found, print an error to stderr and exit non-zero.
-<<<<<<< HEAD
-    printf("argc: %d\n", argc);
-    printf("argv: %s\n", argv);
-    printf("seedURL: %s\n", *seedURL);
-    printf("pageDirectory: %s\n", *pageDirectory);
-    printf("maxDepth: %d\n", *maxDepth);
-=======
     printf("URL: %s\n", *seedURL);
     printf("Directory: %s\n", *pageDirectory);
     printf("Depth: %d\n", *maxDepth);
->>>>>>> 624dc575368b921d15a90fddccd773668f192235
 
 
 }
@@ -83,20 +75,12 @@ int main(const int argc, char *argv[]) {
     }
     // The main function simply calls parseArgs and crawl, then exits zero.
     // ./crawler seedURL pageDirectory maxDepth
-<<<<<<< HEAD
-    char** seedURL = argv[1];
-    char** pageDirectory = argv[2];
-    int* maxDepth = argv[3];
-   
-    parseArgs(argc, argv, seedURL, pageDirectory, maxDepth);
-=======
 
     char* seedURL = argv[1];
     char* pageDirectory = argv[2];
     char* maxDepth = argv[3];
     int intMaxDepth = atoi(maxDepth);
     parseArgs(argc, argv, &seedURL, &pageDirectory, &intMaxDepth);
->>>>>>> 624dc575368b921d15a90fddccd773668f192235
     // 
 }
 ```
