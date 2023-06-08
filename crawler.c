@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -96,3 +100,7 @@ int main(const int argc, char *argv[]) {
     //
     return 0;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
