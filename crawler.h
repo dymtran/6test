@@ -12,6 +12,9 @@ typedef struct {
 
 typedef struct {
 	// Fill in with your implementation
+	webpage_t **webpages;
+	int numWebpages;
+	int capacity;
 } bag_t;
 
 typedef struct {
