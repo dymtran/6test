@@ -65,7 +65,9 @@ static void crawl(char *seedURL, char *pageDirectory, const int maxDepth) {
 	// pageScan that HTML
 	// delete that webpage
 	// delete the hashtable
+	free(pagesSeen);
 	// delete the bag
+	free(bagOfPages);
 }
 
 /**
