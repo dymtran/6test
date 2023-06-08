@@ -24,9 +24,9 @@ static void parseArgs(const int argc, char *argv[], char **seedURL, char **pageD
     // ● if any trouble is found, print an error to stderr and exit non-zero.
     printf("argc: %d\n", argc);
     printf("argv: %s\n", argv);
-    printf("seedURL: %s\n", seedURL);
-    printf("pageDirectory: %s\n", pageDirectory);
-    printf("maxDepth: %d\n", maxDepth);
+    printf("seedURL: %s\n", *seedURL);
+    printf("pageDirectory: %s\n", *pageDirectory);
+    printf("maxDepth: %d\n", *maxDepth);
 
 
 }
@@ -76,9 +76,7 @@ int main(const int argc, char *argv[]) {
     char** seedURL = argv[1];
     char** pageDirectory = argv[2];
     int* maxDepth = argv[3];
-    printf("seedURL: %s\n", seedURL);
-    printf("pageDirectory: %s\n", pageDirectory);
-    printf("maxDepth: %d\n", maxDepth);
+   
     parseArgs(argc, argv, seedURL, pageDirectory, maxDepth);
     // 
 }
