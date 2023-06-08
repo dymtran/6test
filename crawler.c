@@ -73,7 +73,7 @@ static void crawl(char *seedURL, char *pageDirectory, const int maxDepth) {
  * 
  */
 
-static webpage_t *webpage_new(char *url, int depth, char *html) {
+webpage_t *webpage_new(char *url, int depth, char *html) {
 	// Fill in with your implementation
 	// a webpage is a struct with a url, depth, and html
 	webpage_t *page = malloc(sizeof(webpage_t));
@@ -92,7 +92,7 @@ static webpage_t *webpage_new(char *url, int depth, char *html) {
  * 
  * 
  */
-static bag_t *bag_new(int capacity) {
+bag_t *bag_new(int capacity) {
 	// Fill in with your implementation
 	// a bag is essentially going to be a list of webpages
 	// dynamically allocated array of webpages
@@ -102,7 +102,7 @@ static bag_t *bag_new(int capacity) {
 		exit(2);
 	}
 	bag->webpages = malloc(sizeof(webpage_t) * capacity);
-	bag->webpages = 0;
+	bag->numWebpages = 0;
 	bag->capacity = capacity;
 	if (bag->webpages == NULL) {
 		fprintf(stderr, "Error: malloc failed\n");
@@ -116,7 +116,7 @@ static bag_t *bag_new(int capacity) {
  * Adds a webpage to the bag.
  * 
  */
-static void bag_insert(bag_t *bag, webpage_t *page) {
+void bag_insert(bag_t *bag, webpage_t *page) {
 	// if the bag is full, double its size
 	if (bag->numWebpages == bag->capacity) {
 		bag->capacity = (bag->capacity * 2) + 1;
@@ -131,7 +131,6 @@ static void bag_insert(bag_t *bag, webpage_t *page) {
  */
 static void pageScan(webpage_t *page, bag_t *pagesToCrawl, hashtable_t *pagesSeen) {
 	// Fill in with your implementation
-	// use curl to download the webpage
 
 	//while there is another URL in the page:
 	// if that URL is internal:
