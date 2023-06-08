@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,11 +23,9 @@ static void parseArgs(const int argc, char *argv[], char **seedURL, char **pageD
     // ● for pageDirectory, call pagedir_init()
     // ● for maxDepth, ensure it is an integer in specified range [0 ... 10]
     // ● if any trouble is found, print an error to stderr and exit non-zero.
-    printf("argc: %d\n", argc);
-    printf("argv: %s\n", argv);
-    printf("seedURL: %s\n", seedURL);
-    printf("pageDirectory: %s\n", pageDirectory);
-    printf("maxDepth: %d\n", maxDepth);
+    printf("URL: %s\n", *seedURL);
+    printf("Directory: %s\n", *pageDirectory);
+    printf("Depth: %d\n", *maxDepth);
 
 
 }
@@ -70,16 +69,18 @@ static void pageScan(webpage_t *page, bag_t *pagesToCrawl, hashtable_t *pagesSee
 
 int main(const int argc, char *argv[]) {
     // Fill in with your implementation
-
+    if (argc < 4) {
+        printf("Usage: %s seedURL pageDirectory maxDepth\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
     // The main function simply calls parseArgs and crawl, then exits zero.
     // ./crawler seedURL pageDirectory maxDepth
-    char** seedURL = argv[1];
-    char** pageDirectory = argv[2];
-    int* maxDepth = argv[3];
-    printf("seedURL: %s\n", seedURL);
-    printf("pageDirectory: %s\n", pageDirectory);
-    printf("maxDepth: %d\n", maxDepth);
-    parseArgs(argc, argv, seedURL, pageDirectory, maxDepth);
+
+    char* seedURL = argv[1];
+    char* pageDirectory = argv[2];
+    char* maxDepth = argv[3];
+    int intMaxDepth = atoi(maxDepth);
+    parseArgs(argc, argv, &seedURL, &pageDirectory, &intMaxDepth);
     // 
 }
-./crawler https://engineering.ucsc.edu/ data 10
+```
