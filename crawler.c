@@ -132,6 +132,24 @@ void bag_insert(bag_t *bag, webpage_t *page) {
  * Scans a webpage for URLs.
  */
 static void pageScan(webpage_t *page, bag_t *pagesToCrawl, hashtable_t *pagesSeen) {
+    int pos = 0;
+    char *result;
+
+    while ((result = webpage_getNextURL(page, &pos)) != NULL) {
+        // Check if URL has already been seen.
+        if (!hashtable_find(pagesSeen, result)) {
+            // Insert URL to hashtable.
+            bool insertSuccess = hashtable_insert(pagesSeen, result, NULL);
+            if (insertSuccess) {
+                // Create a new webpage struct and insert it into the bag.
+                webpage_t *newPage = webpage_new(result, page->depth + 1, NULL);
+                bag_insert(pagesToCrawl, newPage);
+            }
+        }
+        free(result);
+    }
+}
+
 	// Fill in with your implementation
 
 	//while there is another URL in the page:
@@ -144,7 +162,7 @@ static void pageScan(webpage_t *page, bag_t *pagesToCrawl, hashtable_t *pagesSee
 
 	// 	That is, your code should scan for occurrences of <a href="url"> (again,
 	// the url part varies) and extract the contained URLs so they can be crawled.
-}
+
 
 int main(const int argc, char *argv[]) {
 	// The main function simply calls parseArgs and crawl, then exits zero.
