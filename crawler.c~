@@ -51,7 +51,7 @@ static void crawl(char *seedURL, char *pageDirectory, const int maxDepth) {
 	hashtable_insert(pagesSeen, seedURL, NULL);
 	// initialize the bag and add a webpage representing the seedURL at depth 0
 	bag_t *bagOfPages = bag_new(10);
-	webpage_t *seedPage = webpage_new(seedURL, 0, NULL);   //need an html and need to use download function in curl.c
+	webpage_t *seedPage = webpage_new(seedURL, 0, NULL);
 	bag_insert(bagOfPages, seedPage);
 	// while bag is not empty:
 	// while (bagOfPages->numWebpages > 0) {
